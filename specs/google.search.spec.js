@@ -11,7 +11,7 @@ describe('Google search', () => {
     });
 
     beforeEach(async () => {
-        GoogleMainPage.search({ term: 'selenium' });
+        await GoogleMainPage.search({ term: 'selenium' });
     });
 
     it('should dispay link to seleniumhq at first position in results', async () => {
