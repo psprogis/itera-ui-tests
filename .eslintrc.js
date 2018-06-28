@@ -2,7 +2,8 @@ module.exports = {
     "extends": "airbnb-base",
 
     globals: {
-        EC: true
+        EC: true,
+        allure: true,
     },
 
     env: {

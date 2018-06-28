@@ -15,17 +15,22 @@ describe('Google search', () => {
     });
 
     it('should dispay link to seleniumhq at first position in results', async () => {
-        const results = await SearchResultsPage.getAllResults();
-        const firstUrl = results[0].url;
-
-        expect(firstUrl).toBe('https://www.seleniumhq.org/', 'got wrong first result');
+        const { regularResults: results } = await SearchResultsPage.getAllResults();
+        const SELENIUM_URL = 'https://www.seleniumhq.org/';
 
         log.debug('search results: ');
         log.debug(results);
+
+        expect(results.length).toBeGreaterThan(0, 'found 0 results');
+
+        const firstUrl = results[0].url;
+
+        expect(firstUrl).toBe(SELENIUM_URL, 'got wrong first result');
     });
 
     it('should contain wikipedia and habr in results', async () => {
-        const results = await SearchResultsPage.getAllResults();
+        const { regularResults: results } = await SearchResultsPage.getAllResults();
+
         const wikipediaExpectedResult = {
             text: 'Selenium — Википедия',
             url: 'https://ru.wikipedia.org/wiki/Selenium',
@@ -36,17 +41,17 @@ describe('Google search', () => {
             url: 'https://habr.com/post/152653/',
         };
 
-        expect(results).toContain(wikipediaExpectedResult);
-        expect(results).toContain(habrExpectedResult);
+        expect(results).toContain(wikipediaExpectedResult, 'no wikipedia in search results');
+        expect(results).toContain(habrExpectedResult, 'no habr in search results');
     });
 
     it('should display featured widget', async () => {
-        const widgetText = await SearchResultsPage.getFeaturedWidgetResults();
+        const { text: widgetText } = await SearchResultsPage.getFeaturedWidgetContent();
         const MINIMUM_LENGTH = 10;
 
         log.info(`widget text: ${widgetText}`);
 
-        expect(widgetText.content.length).toBeGreaterThan(MINIMUM_LENGTH,
+        expect(widgetText.length).toBeGreaterThan(MINIMUM_LENGTH,
             `widget text should have at least ${MINIMUM_LENGTH} characters`);
     });
 

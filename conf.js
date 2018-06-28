@@ -2,6 +2,7 @@
 require('./log4js-config').init();
 
 const { SpecReporter } = require('jasmine-spec-reporter');
+const AllureReporter = require('jasmine-allure-reporter');
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -14,6 +15,7 @@ exports.config = {
     allScriptsTimeout: 300000,
     getPageTimeout: 120000,
 
+    // uncomment for debug
     // useBlockingProxy: true,
     // highlightDelay: 3000,
     // webDriverLogDir: 'logs',
@@ -26,6 +28,7 @@ exports.config = {
 
         global.EC = protractor.ExpectedConditions;
 
+        // reporters
         jasmine.getEnv().addReporter(
             new SpecReporter({
                 suite: {
@@ -41,12 +44,22 @@ exports.config = {
 
             }),
         );
+
+        jasmine.getEnv().addReporter(new AllureReporter({
+            resultsDir: 'allure-results',
+        }));
+
+        jasmine.getEnv().afterEach( async () => {
+            const png = await browser.takeScreenshot();
+            const pngBuffer = Buffer.from(png, 'base64');
+
+            allure.createAttachment('Screenshot', pngBuffer, 'image/png');
+        });
     },
 
     jasmineNodeOpts: {
         isVerbose: true,
         showColors: true,
         includeStackTrace: true,
-        defaultTimeoutInterval: 180000,
     },
 };
