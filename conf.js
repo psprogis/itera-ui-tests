@@ -21,6 +21,19 @@ exports.config = {
     // webDriverLogDir: 'logs',
     // seleniumSessionId: 'b5aa12a870c5eb552728c242e676758c  ',
 
+    // capabilities: {
+    //     browserName: 'firefox',
+    // },
+
+    // multiCapabilities: [
+    //     {
+    //         browserName: 'chrome',
+    //     },
+    //     {
+    //         browserName: 'firefox',
+    //     },
+    // ],
+
     onPrepare() {
         const width = 1600;
         const height = 900;

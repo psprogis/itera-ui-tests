@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "protractor conf.js"
+    "test": "protractor conf.js",
+    "cleanup": ".node_modules/.bin/rimraf allure-results allure-report"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,8 @@
     "allure-commandline": "^2.5.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.13.0",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
     "jasmine-allure-reporter": "^1.0.2",
