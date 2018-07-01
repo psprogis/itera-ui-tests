@@ -9,6 +9,7 @@ exports.config = {
     ignoreUncaughtExceptions: true,
     specs: [
         'specs/google.search.spec.js',
+        'specs/itera.vacancies.spec.js',
     ],
 
     framework: 'jasmine2',
@@ -19,7 +20,7 @@ exports.config = {
     // useBlockingProxy: true,
     // highlightDelay: 3000,
     // webDriverLogDir: 'logs',
-    // seleniumSessionId: 'b5aa12a870c5eb552728c242e676758c  ',
+    // seleniumSessionId: '47a77d37c9ce8cd6ae5ee3f3a1e63c5a',
 
     // capabilities: {
     //     browserName: 'firefox',
