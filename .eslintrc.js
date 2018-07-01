@@ -17,5 +17,6 @@ module.exports = {
         indent: ['error', 4],
         'max-len': ['error', { 'code': 120 }],
         'padded-blocks': 'off',
+        'class-methods-use-this': 'off'
     }
 };
