@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "protractor conf.js",
-    "cleanup": ".node_modules/.bin/rimraf allure-results allure-report"
+    "cleanup": "node_modules/.bin/rimraf allure-results allure-report",
+    "lint": "node_modules/.bin/eslint --config .eslintrc.js"
   },
   "keywords": [],
   "author": "",
