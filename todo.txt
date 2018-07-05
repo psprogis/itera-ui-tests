@@ -1,6 +1,5 @@
 
 what should be improved:
-1) add waitReady function to handle waits for elements
 2) add more reporters, at least video recording
 3) refactor and cleanup navigation menu class
 4) cleanup selectors

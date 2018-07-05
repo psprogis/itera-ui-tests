@@ -40,8 +40,6 @@ exports.config = {
         const height = 900;
         browser.driver.manage().window().setSize(width, height);
 
-        global.EC = protractor.ExpectedConditions;
-
         // reporters
         jasmine.getEnv().addReporter(
             new SpecReporter({
