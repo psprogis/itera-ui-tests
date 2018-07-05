@@ -38,7 +38,7 @@ describe('Vacancies list', () => {
             log.info(`vacancies titles:\n${vacanciesStr}`);
         });
 
-        it('should contain at least one .NET vacancy', async() => {
+        it('should contain at least one .NET vacancy', async () => {
             const vacancies = await vacanciesPage.getAllVacancies();
             const dotNetRegexp = /\.net/i;
             const dotNetVacancies = vacancies

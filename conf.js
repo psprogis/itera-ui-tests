@@ -63,7 +63,7 @@ exports.config = {
             resultsDir: 'allure-results',
         }));
 
-        jasmine.getEnv().afterEach( async () => {
+        jasmine.getEnv().afterEach(async () => {
             const png = await browser.takeScreenshot();
             const pngBuffer = Buffer.from(png, 'base64');
 
