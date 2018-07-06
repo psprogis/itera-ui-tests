@@ -1,5 +1,4 @@
 
 what should be improved:
-2) add more reporters, at least video recording
 3) refactor and cleanup navigation menu class
 4) cleanup selectors

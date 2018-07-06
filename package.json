@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "protractor conf.js",
     "cleanup": "node_modules/.bin/rimraf allure-results allure-report",
+    "test": "protractor conf.js",
+    "report": "allure generate && allure open",
     "lint": "node_modules/.bin/eslint ."
   },
   "keywords": [],
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "jasmine-allure-reporter": "^1.0.2",
+    "jasmine-custom-reporters": "^1.2.1",
     "jasmine-spec-reporter": "^4.2.1",
     "log4js": "^2.10.0"
   }

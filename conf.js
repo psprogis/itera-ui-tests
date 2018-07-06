@@ -3,6 +3,7 @@ require('./log4js-config').init();
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 const AllureReporter = require('jasmine-allure-reporter');
+const consoleReporter = require('jasmine-custom-reporters/spec-console-reporter');
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -67,11 +68,14 @@ exports.config = {
 
             allure.createAttachment('Screenshot', pngBuffer, 'image/png');
         });
+
+        jasmine.getEnv().addReporter(consoleReporter);
     },
 
     jasmineNodeOpts: {
         isVerbose: true,
         showColors: true,
         includeStackTrace: true,
+        print() {}, // turn off dots
     },
 };
