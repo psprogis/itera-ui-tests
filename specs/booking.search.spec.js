@@ -14,7 +14,7 @@ describe('Search feature', () => {
     });
 
     beforeEach(async () => {
-        // await this.mainPage.open();
+        await this.mainPage.open();
     });
 
     it('new should find result for New York city', async () => {
