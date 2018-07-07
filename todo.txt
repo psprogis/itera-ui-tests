@@ -1,4 +1,5 @@
 
 what should be improved:
 3) refactor and cleanup navigation menu class
-4) cleanup selectors
+5) merge another ui/rest test examples into this repo
+6) rename repo and add description in README

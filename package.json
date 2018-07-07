@@ -1,7 +1,7 @@
 {
   "name": "ui-tests",
   "version": "1.0.0",
-  "description": "",
+  "description": "Examples of using protractor for different non-angular sites tests",
   "main": "index.js",
   "scripts": {
     "cleanup": "node_modules/.bin/rimraf allure-results allure-report",
@@ -10,7 +10,7 @@
     "lint": "node_modules/.bin/eslint ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Pavel Sprogis <pavel.sprogis@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "allure-commandline": "^2.5.0",
