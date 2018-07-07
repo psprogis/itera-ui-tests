@@ -9,6 +9,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     ignoreUncaughtExceptions: true,
     specs: [
+        'specs/booking.search.spec.js',
         'specs/google.search.spec.js',
         'specs/itera.vacancies.spec.js',
     ],
