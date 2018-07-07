@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cleanup": "node_modules/.bin/rimraf allure-results allure-report",
-    "test": "protractor conf.js",
+    "test": "npm run cleanup && protractor conf.js",
     "report": "allure generate && allure open",
     "lint": "node_modules/.bin/eslint ."
   },
