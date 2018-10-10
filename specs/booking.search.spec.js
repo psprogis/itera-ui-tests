@@ -6,8 +6,8 @@ const { MainPage, SearchResultsPage } = require('../lib/elements/booking');
 
 describe('Search feature', () => {
 
-    beforeAll(() => {
-        browser.ignoreSynchronization = true;
+    beforeAll(async () => {
+        await browser.waitForAngularEnabled(false);
 
         this.searchResults = new SearchResultsPage();
         this.mainPage = new MainPage();
