@@ -8,20 +8,21 @@ const vacanciesPage = new VacanciesPage();
 describe('Vacancies list', () => {
 
     beforeAll(async () => {
-        browser.ignoreSynchronization = true;
+        await browser.waitForAngularEnabled(false);
 
         await mainPage.open();
+        await mainPage.switchCountry({ name: 'Ukraine' });
         await mainPage.navigateToVacancies();
     });
 
     it('should be accessible from main page', async () => {
         const title = await mainPage.getTitle();
-        expect(title).toBe('Work at Itera - Itera', 'got wrong title for Vacancies page');
+        expect(title).toBe('Vacancies - Itera', 'got wrong title for Vacancies page');
     });
 
     describe('for Ukraine', () => {
         beforeAll(async () => {
-            await vacanciesPage.switchCountry({ country: 'Ukraine' });
+            await vacanciesPage.switchCountry({ name: 'Ukraine' });
         });
 
         it('should contain at least one vacancy', async () => {
