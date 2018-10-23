@@ -58,6 +58,7 @@ Starting web server...
 * Russian locale, charset, may affect booking search tests
 
 ## TODO
+* use `NODE_PATH` variable to avoid relative paths in specs 
 * refactor and cleanup navigation menu class
 * merge another ui/rest test examples into this repo
 * rename repo
