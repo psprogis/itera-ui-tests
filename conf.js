@@ -14,6 +14,7 @@ exports.config = {
         'specs/itera.vacancies.spec.js',
     ],
 
+    SELENIUM_PROMISE_MANAGER: false,
     framework: 'jasmine2',
     allScriptsTimeout: 300000,
     getPageTimeout: 120000,
