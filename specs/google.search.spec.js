@@ -1,11 +1,14 @@
 
 const log = require('log4js').getLogger('spec-logger');
 const { MainPage: GoogleMainPage, SearchResultsPage } = require('../lib/elements/google');
+const customMatchers = require('../lib/customMatchers');
 
 describe('Google search', () => {
 
     beforeAll(async () => {
-        browser.ignoreSynchronization = true;
+        jasmine.addMatchers(customMatchers);
+
+        await browser.waitForAngularEnabled(false);
 
         await GoogleMainPage.open();
     });
@@ -32,17 +35,17 @@ describe('Google search', () => {
         const { regularResults: results } = await SearchResultsPage.getAllResults();
 
         const wikipediaExpectedResult = {
-            text: 'Selenium — Википедия',
-            url: 'https://ru.wikipedia.org/wiki/Selenium',
+            text: /Selenium — В.*/,
+            url: /https:\/\/.*wikipedia.org\/wiki\/Selenium/,
         };
 
         const habrExpectedResult = {
-            text: 'Что такое Selenium? / Хабр',
-            url: 'https://habr.com/post/152653/',
+            text: /Что такое Selenium\? \/ Хабр/,
+            url: /https:\/\/habr.com\/post\/152653\//,
         };
 
-        expect(results).toContain(wikipediaExpectedResult, 'no wikipedia in search results');
-        expect(results).toContain(habrExpectedResult, 'no habr in search results');
+        expect(results).toMatchElement(wikipediaExpectedResult, 'no wikipedia in search results');
+        expect(results).toMatchElement(habrExpectedResult, 'no habr in search results');
     });
 
     it('should display featured widget', async () => {

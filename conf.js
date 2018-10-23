@@ -22,7 +22,13 @@ exports.config = {
     // useBlockingProxy: true,
     // highlightDelay: 3000,
     // webDriverLogDir: 'logs',
-    // seleniumSessionId: '47a77d37c9ce8cd6ae5ee3f3a1e63c5a',
+    // seleniumSessionId: '091cda6b89457082ee779ccc358f473c',
+
+    capabilities: {
+        browserName: 'chrome',
+        version: '',
+        platform: 'ANY',
+    },
 
     // capabilities: {
     //     browserName: 'firefox',
