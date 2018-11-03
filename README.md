@@ -1,7 +1,7 @@
 # Examples of using protractor for different non-angular sites
 
 ## Preconditions/Environment
-* Test should work on any linux/unix (CentOS, RedHat, Fedora, etc.), on Windows start tests from Git Bash (`rm command` should be in path)
+* Test should work on any linux/unix (CentOS, RedHat, Fedora, etc.) and Windows 7 (and higher)
 * node.js version v10.5.0 (but it should work with 8.x also)
 ```bash
 node -v
