@@ -4,16 +4,16 @@
   "description": "Examples of using protractor for different non-angular sites tests",
   "main": "index.js",
   "scripts": {
-    "cleanup": "node_modules/.bin/rimraf allure-results allure-report",
+    "cleanup": "rimraf allure-results allure-report",
     "test": "npm run cleanup && protractor conf.js",
     "report": "allure generate && allure open",
-    "lint": "node_modules/.bin/eslint ."
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Pavel Sprogis <pavel.sprogis@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "allure-commandline": "^2.7.0",
+    "allure-commandline": "^2.13.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -23,6 +23,7 @@
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-custom-reporters": "^1.2.1",
     "jasmine-spec-reporter": "^4.2.1",
-    "log4js": "^3.0.6"
+    "log4js": "^3.0.6",
+    "protractor": "^5.4.2"
   }
 }
