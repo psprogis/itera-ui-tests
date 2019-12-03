@@ -18,6 +18,9 @@ describe('Google search', () => {
     });
 
     it('should dispay link to Wikipedia at first position in results', async () => {
+        allure.story('some story number');
+        allure.feature('google search');
+
         const { regularResults: results } = await SearchResultsPage.getAllResults();
         const WIKI_URL = 'https://uk.wikipedia.org › wiki › Selenium';
 
