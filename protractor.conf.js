@@ -1,17 +1,80 @@
-
 require('./log4js-config').init();
+const log = require('log4js').getLogger('conf-logger');
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 const AllureReporter = require('jasmine-allure-reporter');
 const consoleReporter = require('jasmine-custom-reporters/spec-console-reporter');
 
-exports.config = {
+function setupCapabilities(config) {
+    let capabilityName = process.env.CAPABILITY_NAME;
+    // let { capabilityName } = browser.params; // --params can be used also
+    const supportedCapabilities = ['chrome', 'firefox', 'multiple', 'headless-chrome'];
+
+    log.debug(`capability name in setup: <${capabilityName}>`);
+
+    if (capabilityName === undefined || capabilityName === '') {
+        log.warn('using default chrome setup');
+        capabilityName = 'chrome';
+    }
+
+    if (!supportedCapabilities.includes(capabilityName)) {
+        throw new Error(`unknown capability, should be one of: ${supportedCapabilities}`);
+    }
+
+    log.info(`prepare capabilities for: ${capabilityName}`);
+
+    // https://www.protractortest.org/#/browser-setup
+    const capabilitiesMap = {
+        chrome: {
+            browserName: 'chrome',
+            enableVNC: true,
+            version: '',
+            platform: 'ANY',
+        },
+
+        // https://developer.mozilla.org/en-US/docs/Web/WebDriver/Capabilities/firefoxOptions#Prefs
+        firefox: {
+            browserName: 'firefox',
+            enableVNC: true,
+            'moz:firefoxOptions': {
+                prefs: {
+                    'geo.enabled': false,
+                },
+            },
+        },
+        multiple: [
+            {
+                browserName: 'chrome',
+            },
+            {
+                browserName: 'firefox',
+            },
+        ],
+        'headless-chrome': {
+            browserName: 'chrome',
+            chromeOptions: {
+                args: ['--headless', '--disable-gpu', '--window-size=1600,1200'],
+            },
+        },
+    };
+
+    /* eslint-disable no-param-reassign */
+    if (capabilityName === 'multiple') {
+        config.multiCapabilities = capabilitiesMap[capabilityName];
+    } else {
+        config.capabilities = capabilitiesMap[capabilityName];
+    }
+    /* eslint-enable no-param-reassign */
+}
+
+const config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     ignoreUncaughtExceptions: true,
     specs: [
-        'specs/booking.search.spec.js',
-        'specs/google.search.spec.js',
-        'specs/itera.vacancies.spec.js',
+        'specs/takeaway.orders.spec.js',
+        // 'specs/booking.search.spec.js',
+        // 'specs/google.search.spec.js',
+        // 'specs/itera.vacancies.spec.js',
     ],
 
     SELENIUM_PROMISE_MANAGER: false,
@@ -24,25 +87,6 @@ exports.config = {
     // highlightDelay: 3000,
     // webDriverLogDir: 'logs',
     // seleniumSessionId: '091cda6b89457082ee779ccc358f473c',
-
-    capabilities: {
-        browserName: 'chrome',
-        version: '',
-        platform: 'ANY',
-    },
-
-    // capabilities: {
-    //     browserName: 'firefox',
-    // },
-
-    // multiCapabilities: [
-    //     {
-    //         browserName: 'chrome',
-    //     },
-    //     {
-    //         browserName: 'firefox',
-    //     },
-    // ],
 
     onPrepare() {
         const width = 1600;
@@ -78,6 +122,12 @@ exports.config = {
         });
 
         jasmine.getEnv().addReporter(consoleReporter);
+
+        // temporary solution for unhandled rejections
+        process.on('unhandledRejection', (error) => {
+            log.warn('unhandledRejection');
+            log.warn(error);
+        });
     },
 
     jasmineNodeOpts: {
@@ -87,3 +137,9 @@ exports.config = {
         print() {}, // turn off dots
     },
 };
+
+setupCapabilities(config);
+
+log.info(config);
+
+exports.config = config;
