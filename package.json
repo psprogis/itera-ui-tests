@@ -2,10 +2,10 @@
   "name": "ui-tests",
   "version": "1.0.0",
   "description": "Examples of using protractor for different non-angular sites tests",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "cleanup": "rimraf allure-results allure-report",
-    "test": "npm run cleanup && protractor conf.js",
+    "test": "npm run cleanup && protractor protractor.conf.js",
     "report": "allure generate && allure open",
     "lint": "eslint ."
   },
