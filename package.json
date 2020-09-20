@@ -14,16 +14,17 @@
   "license": "ISC",
   "devDependencies": {
     "allure-commandline": "^2.13.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "rimraf": "^2.6.2"
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jasmine": "^4.1.1",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-custom-reporters": "^1.2.1",
-    "jasmine-spec-reporter": "^4.2.1",
-    "log4js": "^3.0.6",
-    "protractor": "^5.4.2"
+    "jasmine-spec-reporter": "^6.0.0",
+    "log4js": "^6.3.0",
+    "protractor": "^7.0.0"
   }
 }
