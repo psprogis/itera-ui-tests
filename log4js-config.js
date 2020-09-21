@@ -8,7 +8,7 @@ module.exports.init = () => {
                 type: 'console',
                 layout: {
                     type: 'pattern',
-                    pattern: '%[[%d{ABSOLUTE}] [%4.4p] [%12.12c] -%] %m',
+                    pattern: '%[[%d{ABSOLUTE}] [%4.4p] [%18.18c] -%] %m',
                 },
             },
         },
