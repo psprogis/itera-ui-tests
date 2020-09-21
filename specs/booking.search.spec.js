@@ -1,8 +1,8 @@
 
 const log = require('log4js').getLogger('spec-logger');
-const timeUtils = require('./../lib/timeUtils');
+const timeUtils = require('../lib/timeUtils');
 
-const { MainPage, SearchResultsPage } = require('../lib/elements/booking');
+const { MainPage, SearchResultsPage } = require('../lib/ui/elements/booking');
 
 describe('Search feature', () => {
 

@@ -1,6 +1,6 @@
 
 const log = require('log4js').getLogger('spec-logger');
-const { MainPage: IteraMainPage, VacanciesPage } = require('../lib/elements/itera');
+const { MainPage: IteraMainPage, VacanciesPage } = require('../lib/ui/elements/itera');
 
 const mainPage = new IteraMainPage();
 const vacanciesPage = new VacanciesPage();
