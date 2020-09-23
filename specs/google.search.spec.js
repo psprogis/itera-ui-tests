@@ -1,4 +1,3 @@
-
 const log = require('log4js').getLogger('spec-logger');
 const { MainPage: GoogleMainPage, SearchResultsPage } = require('../lib/ui/elements/google');
 const customMatchers = require('../lib/customMatchers');

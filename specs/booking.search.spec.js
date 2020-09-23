@@ -1,13 +1,12 @@
-
 const log = require('log4js').getLogger('spec-logger');
 const timeUtils = require('../lib/timeUtils');
-
+const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 const { MainPage, SearchResultsPage } = require('../lib/ui/elements/booking');
 
 describe('Search feature', () => {
 
     beforeAll(async () => {
-        await browser.waitForAngularEnabled(false);
+        await setNonAngularSite();
 
         this.searchResults = new SearchResultsPage();
         this.mainPage = new MainPage();
@@ -33,7 +32,7 @@ describe('Search feature', () => {
 
         expect(results.length).toBeGreaterThan(1, 'Expect at least 1 found result (deal)');
 
-        expect(results.map(result => result.city).every(city => city.includes(CITY)))
+        expect(results.map((result) => result.city).every((city) => city.includes(CITY)))
             .toEqual(true, 'Got wrong city names in results');
     });
 });

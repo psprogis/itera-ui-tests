@@ -1,4 +1,3 @@
-
 const log = require('log4js').getLogger('spec-logger');
 const { MainPage: IteraMainPage, VacanciesPage } = require('../lib/ui/elements/itera');
 
@@ -17,6 +16,7 @@ describe('Vacancies list', () => {
 
     it('should be accessible from main page', async () => {
         const title = await mainPage.getTitle();
+
         expect(title).toBe('Vacancies - Itera', 'got wrong title for Vacancies page');
     });
 
@@ -33,7 +33,7 @@ describe('Vacancies list', () => {
             expect(vacancies.length).toBeGreaterThanOrEqual(1, 'found less than 1 vacancy in Ukraine');
 
             const vacanciesStr = vacancies
-                .map(vacancy => vacancy.title)
+                .map((vacancy) => vacancy.title)
                 .join('\n');
 
             log.info(`vacancies titles:\n${vacanciesStr}`);
@@ -43,7 +43,7 @@ describe('Vacancies list', () => {
             const vacancies = await vacanciesPage.getAllVacancies();
             const dotNetRegexp = /\.net/i;
             const dotNetVacancies = vacancies
-                .filter(vacancy => dotNetRegexp.test(vacancy.title));
+                .filter((vacancy) => dotNetRegexp.test(vacancy.title));
 
             expect(dotNetVacancies.length).toBeGreaterThanOrEqual(1, 'found less than 1 .NET vacany');
         });
