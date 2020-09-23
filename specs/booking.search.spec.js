@@ -3,7 +3,7 @@ const timeUtils = require('../lib/timeUtils');
 const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 const { MainPage, SearchResultsPage } = require('../lib/ui/elements/booking');
 
-describe('Search feature', () => {
+describe('search feature', () => {
 
     beforeAll(async () => {
         await setNonAngularSite();

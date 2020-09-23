@@ -72,7 +72,7 @@ const config = {
     ignoreUncaughtExceptions: true,
     specs: [
         'specs/takeaway.orders.spec.js',
-        // 'specs/booking.search.spec.js',
+        'specs/booking.search.spec.js',
         // 'specs/google.search.spec.js',
         // 'specs/itera.vacancies.spec.js',
     ],
