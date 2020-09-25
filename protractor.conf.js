@@ -74,7 +74,7 @@ const config = {
         'specs/takeaway.orders.spec.js',
         'specs/booking.search.spec.js',
         // 'specs/google.search.spec.js',
-        // 'specs/itera.vacancies.spec.js',
+        'specs/itera.vacancies.spec.js',
     ],
 
     SELENIUM_PROMISE_MANAGER: false,

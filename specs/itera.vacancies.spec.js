@@ -1,5 +1,6 @@
 const log = require('log4js').getLogger('spec-logger');
 const { MainPage: IteraMainPage, VacanciesPage } = require('../lib/ui/elements/itera');
+const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 
 const mainPage = new IteraMainPage();
 const vacanciesPage = new VacanciesPage();
@@ -7,7 +8,7 @@ const vacanciesPage = new VacanciesPage();
 describe('Vacancies list', () => {
 
     beforeAll(async () => {
-        await browser.waitForAngularEnabled(false);
+        await setNonAngularSite();
 
         await mainPage.open();
         await mainPage.switchCountry({ name: 'Ukraine' });
@@ -41,11 +42,15 @@ describe('Vacancies list', () => {
 
         it('should contain at least one .NET vacancy', async () => {
             const vacancies = await vacanciesPage.getAllVacancies();
-            const dotNetRegexp = /\.net/i;
-            const dotNetVacancies = vacancies
-                .filter((vacancy) => dotNetRegexp.test(vacancy.title));
+            const dotNetVacancies = filterDotNetVacancies(vacancies);
 
             expect(dotNetVacancies.length).toBeGreaterThanOrEqual(1, 'found less than 1 .NET vacany');
         });
     });
 });
+
+function filterDotNetVacancies(allVacancies) {
+    const dotNetRegexp = /\.net/i;
+    return allVacancies
+        .filter((vacancy) => dotNetRegexp.test(vacancy.title));
+}
