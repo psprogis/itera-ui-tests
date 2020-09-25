@@ -31,6 +31,7 @@ module.exports = {
                 consistent: true,
             },
         }],
+        'no-use-before-define': 'off',
     },
 
     plugins: [
