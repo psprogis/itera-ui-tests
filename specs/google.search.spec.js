@@ -1,13 +1,14 @@
 const log = require('log4js').getLogger('spec-logger');
 const { MainPage: GoogleMainPage, SearchResultsPage } = require('../lib/ui/elements/google');
 const customMatchers = require('../lib/customMatchers');
+const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 
 describe('Google search', () => {
 
     beforeAll(async () => {
         jasmine.addMatchers(customMatchers);
 
-        await browser.waitForAngularEnabled(false);
+        await setNonAngularSite();
 
         await GoogleMainPage.open();
     });
@@ -16,21 +17,16 @@ describe('Google search', () => {
         await GoogleMainPage.search({ term: 'selenium' });
     });
 
-    it('should dispay link to Wikipedia at first position in results', async () => {
+    it('should display non-empty results', async () => {
         allure.story('some story number');
         allure.feature('google search');
 
         const { regularResults: results } = await SearchResultsPage.getAllResults();
-        const WIKI_URL = 'https://uk.wikipedia.org › wiki › Selenium';
 
         log.debug('search results: ');
         log.debug(results);
 
         expect(results.length).toBeGreaterThan(0, 'found 0 results');
-
-        const firstUrl = results[0].url;
-
-        expect(firstUrl).toBe(WIKI_URL, 'got wrong first result');
     });
 
     it('should contain wikipedia and habr in results', async () => {

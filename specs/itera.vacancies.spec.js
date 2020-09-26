@@ -5,7 +5,7 @@ const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 const mainPage = new IteraMainPage();
 const vacanciesPage = new VacanciesPage();
 
-describe('Vacancies list', () => {
+describe('Itera vacancies list', () => {
 
     beforeAll(async () => {
         await setNonAngularSite();

@@ -5,7 +5,7 @@ const { setNonAngularSite } = require('../lib/ui/browserHelpers');
 // steps for the second example/approach with allure steps
 const { findRestaurant, placeOrder, processOrder } = require('../lib/ui/steps');
 
-describe('orders feature', () => {
+describe('Takeaway orders feature', () => {
 
     beforeAll(async () => {
         log.info('setup before test');

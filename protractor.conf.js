@@ -3,7 +3,6 @@ const log = require('log4js').getLogger('conf-logger');
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 const AllureReporter = require('jasmine-allure-reporter');
-const consoleReporter = require('jasmine-custom-reporters/spec-console-reporter');
 
 function setupCapabilities(config) {
     let capabilityName = process.env.CAPABILITY_NAME;
@@ -24,12 +23,16 @@ function setupCapabilities(config) {
     log.info(`prepare capabilities for: ${capabilityName}`);
 
     // https://www.protractortest.org/#/browser-setup
+    // https://sites.google.com/a/chromium.org/chromedriver/capabilities
     const capabilitiesMap = {
         chrome: {
             browserName: 'chrome',
             enableVNC: true,
             version: '',
             platform: 'ANY',
+            chromeOptions: {
+                args: ['--lang=en'],
+            },
         },
 
         // https://developer.mozilla.org/en-US/docs/Web/WebDriver/Capabilities/firefoxOptions#Prefs
@@ -73,7 +76,7 @@ const config = {
     specs: [
         'specs/takeaway.orders.spec.js',
         'specs/booking.search.spec.js',
-        // 'specs/google.search.spec.js',
+        'specs/google.search.spec.js',
         'specs/itera.vacancies.spec.js',
     ],
 
@@ -120,8 +123,6 @@ const config = {
 
             allure.createAttachment('Screenshot', pngBuffer, 'image/png');
         });
-
-        jasmine.getEnv().addReporter(consoleReporter);
 
         // temporary solution for unhandled rejections
         process.on('unhandledRejection', (error) => {
