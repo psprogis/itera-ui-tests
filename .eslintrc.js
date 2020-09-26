@@ -14,7 +14,7 @@ module.exports = {
     env: {
         jasmine: true,
         protractor: true,
-        es6: true,
+        es2020: true,
         node: true,
     },
 
