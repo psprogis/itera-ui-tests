@@ -175,10 +175,9 @@ You can download additional browser versions if needed.
 * Russian locale, charset, may affect booking search tests
 
 ## TODO
-* update README file, especially Notes section and screenshots
 * use [cross-env](https://www.npmjs.com/package/cross-env) module in npm scripts.
 * use `NODE_PATH` variable to avoid relative paths in specs
-* merge another ui/rest test examples into this repo (swapi, IDR, etc.)
+* merge another ui/rest test examples into this repo (swapi, IDR ((http://demo.guru99.com/test/newtours/)), etc.)
 * rename repo
 * add video recording of a tests and subtitles with the custom ffmpeg-reporter.
 * refactor and cleanup navigation menu class
