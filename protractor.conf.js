@@ -1,5 +1,7 @@
 require('./log4js-config').init();
 const log = require('log4js').getLogger('conf-logger');
+const fs = require('fs');
+const path = require('path');
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 const AllureReporter = require('jasmine-allure-reporter');
@@ -129,6 +131,19 @@ const config = {
             log.warn('unhandledRejection');
             log.warn(error);
         });
+    },
+
+    onComplete() {
+        const browserLogsFilePath = path.join(__dirname, 'browser.log');
+
+        browser.manage().logs().get('browser')
+            .then(browserLogs => {
+                browserLogs.forEach(logMsg => {
+                    const timestamp = new Date(0);
+                    timestamp.setUTCSeconds(logMsg.timestamp);
+                    fs.appendFileSync(browserLogsFilePath, `[${timestamp}] ${logMsg.message} \n`);
+                });
+            });
     },
 
     jasmineNodeOpts: {
