@@ -11,8 +11,6 @@ This repository is a collection of simple e2e protractor tests for different non
 6. [Possible issues](#possible-issues) 
 7. [TODO](#TODO)
 
-## Notes and comments
-
 ## Preconditions and environment
 * Test should work on any linux/unix (CentOS, RedHat, Fedora, etc.) and Windows 10 (start from GitBash)
 * node.js version v12.18.1 (or higher)
