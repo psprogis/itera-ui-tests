@@ -2,14 +2,13 @@
 This repository is a collection of simple e2e protractor tests for different non-angular sites.  
 
 **Table of Contents**
-1. [Notes and comments](#notes-and-comments)
-2. [Preconditions and environment](#preconditions-and-environment)
-3. [How to run](#how-to-run)
-4. [Multiple browsers setup](#multiple-browsers-setup)
+1. [Preconditions and environment](#preconditions-and-environment)
+2. [How to run](#how-to-run)
+3. [Multiple browsers setup](#multiple-browsers-setup)
     1. [How to start selenoid locally](#how-to-start-selenoid-locally)
-5. [Test report](#test-report)
-6. [Possible issues](#possible-issues) 
-7. [TODO](#TODO)
+4. [Test report](#test-report)
+5. [Possible issues](#possible-issues) 
+6. [TODO](#TODO)
 
 ## Preconditions and environment
 * Test should work on any linux/unix (CentOS, RedHat, Fedora, etc.) and Windows 10 (start from GitBash)
